@@ -8,22 +8,24 @@
 require 'faker'
 5.times do
   Dog.create(
-    name: Faker::Name.first_name,
+    name: Faker::Name.first_name
   )
-end
 
-5.times do
 
   Dogsitter.create(
-    name: Faker::Name.last_name,
+    name: Faker::Name.last_name
   )
-end
 
-5.times do
 
   City.create(
     name: Faker::Address.state,
     dog_id: rand((Dog.first.id)..(Dog.last.id)),
     dogsitter_id: rand((Dogsitter.first.id)..(Dogsitter.last.id))
   )
+
+ Stroll.create(
+   city_id: rand((City.first.id)..(City.last.id)),
+   dog_id: rand((Dog.first.id)..(Dog.last.id)),
+	 dogsitter_id: rand((Dogsitter.first.id)..(Dogsitter.last.id))
+ )
 end
